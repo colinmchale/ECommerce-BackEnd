@@ -15,7 +15,7 @@ The project's dependencies are already inside of the repo in package.json. The u
 ## Usage  
 To begin the program the user must first initialize the server by running the command "node server.js" in the terminal. Once the server has begun, the user will need to open an Insomnia window to investigate the routes created in the routes folder of the repo. Depending on the user's desired action, a GET, POST, PUT, and DELETE can all be ran through Insomnia. The resulting table can be checked in MySQL workbench.
 
-[Link to Screen Recording](photo)
+[Link to Screen Recording](https://drive.google.com/file/d/1swcrfFVSyJSmZQsPkqul2kfytjo_kH9j/view)
 
 ## Questions
 Link to github: [Click Here](https://github.com/colinmchale)  
