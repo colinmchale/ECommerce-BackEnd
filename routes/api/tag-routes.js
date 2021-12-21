@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Product data
   try {
     const tagData = await Tag.findAll({
-      include: [{ model: Product }],
+      include: [{ model: Product, through: ProductTag, as: 'tag_info'}],
     });
     res.status(200).json(tagData);
   } catch (err) {
@@ -21,7 +21,7 @@ router.get('/:id', async (req, res) => {
   // be sure to include its associated Product data
   try {
     const tagData = await Tag.findByPk(req.params.id, {
-      include: [{ model: Product }],
+      include: [{ model: Product, through: ProductTag, as: 'tag_info'}],
     });
 
     if (!tagData) {
@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
   // create a new tag
  try {
    const tagData = await Tag.create({
-     reader_id: req.body.reader_id,
+    tag_name: req.body.tag_name
    });
    res.status(200).json(tagData);
  } catch (err) {
@@ -49,10 +49,10 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   // update a tag's name by its `id` value
-  const updatedCategory = await Tag.update(
+  const updatedTag = await Tag.update(
     {
       // All the fields you can update and the data attached to the request body.
-      category_name: req.body.category_name
+      tag_name: req.body.tag_name
     },
     {
       // Gets a tag's name based on the id given in the request parameters
@@ -62,7 +62,7 @@ router.put('/:id', async (req, res) => {
     }
   );
   
-  res.json(updatedCategory);
+  res.json(updatedTag);
 });
 
 router.delete('/:id', async (req, res) => {
